@@ -1,11 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 class Input extends React.Component{
 
   render(){
     return (
       <div>
-        <form className='bookmark-input-form'>
+        <form
+          className='bookmark-input-form'
+          onSubmit={(event) => {
+            event.preventDefault();
+            return this.props.submitBookmark(
+              this.props.title,
+              this.props.description,
+              this.props.url,
+              this.props.tags
+            );
+          }}>
           <label>
             Title
             <input
@@ -58,12 +70,23 @@ class Input extends React.Component{
               }}/>
           </label>
           <br />
-          <button className='submit-btn' type='submit'>Save to bookmarks</button>
+          <button
+            className='submit-btn'
+            type='submit'
+            >Save to bookmarks</button>
         </form>
       </div>
     );
   }
-
 }
+
+Input.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  url: PropTypes.string,
+  tags: PropTypes.string,
+  updateInput : PropTypes.func,
+  submitBookmark: PropTypes.func
+};
 
 export default Input;

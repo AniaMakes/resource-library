@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import input from './input';
+import inputComponentFunctionality from './inputComponentFunctionality';
 
 export default combineReducers({
-  input
+  inputComponent : inputComponentFunctionality
 });
