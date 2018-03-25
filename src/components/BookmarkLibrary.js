@@ -1,17 +1,33 @@
 import React from 'react';
+import SingleBookmark from './SingleBookmark';
+import PropTypes from 'prop-types';
+
 
 class BookmarkLibrary extends React.Component{
 
   render(){
 
-    // let incomingState = [].concat(this.props.)
+    console.log(this.props);
+    let incomingState = [].concat(this.props.bookmarks);
+
+    const bookmarkCollection = incomingState.map((bookmark) => {
+      return (<SingleBookmark
+        title={bookmark.title}
+        description={bookmark.description}
+        url={bookmark.url}
+      />);
+    });
 
     return(
       <div>
-        Bookmarks go here
+        {bookmarkCollection}
       </div>
     );
   }
 }
+
+BookmarkLibrary.propTypes = {
+ bookmarks: PropTypes.array
+};
 
 export default BookmarkLibrary;
