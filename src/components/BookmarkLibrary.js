@@ -20,6 +20,7 @@ class BookmarkLibrary extends React.Component{
 
     return(
       <div>
+        <p>Your Bookmark Collection</p>
         {bookmarkCollection}
       </div>
     );
